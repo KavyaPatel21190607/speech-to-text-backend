@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch src/app.ts",
-    "build": "tsc",
-    "start": "cross-env NODE_ENV=production node dist/app.js",
-    "postbuild": "echo 'Build completed successfully'",
+    "build": "rm -rf dist && tsc && echo 'Build completed successfully'",
+    "start": "node dist/app.js",
+    "postinstall": "npm run build",
     "lint": "echo 'Linting skipped'",
     "test": "echo 'Tests skipped'"
   },
@@ -39,7 +39,9 @@
     "morgan": "^1.10.1",
     "multer": "^1.4.5-lts.1",
     "winston": "^3.18.3",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "typescript": "^5.6.3",
+    "@types/node": "^20.16.11"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -52,11 +54,9 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/multer": "^1.4.12",
-    "@types/node": "^20.16.11",
     "@types/winston": "^2.4.4",
     "cross-env": "^7.0.3",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "tsx": "^4.19.2"
   },
   "engines": {
     "node": ">=18.0.0",
