@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch src/app.ts",
     "build": "rm -rf dist && tsc && echo 'Build completed successfully'",
-    "start": "node dist/app.js",
+    "start": "NODE_ENV=production node dist/app.js",
     "postinstall": "npm run build",
     "lint": "echo 'Linting skipped'",
     "test": "echo 'Tests skipped'"
