@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: speech-to-text-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
+    branch: main
