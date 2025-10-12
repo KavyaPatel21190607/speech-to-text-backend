@@ -127,17 +127,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     // Get port from environment or use default 5000
     const port = parseInt(process.env.PORT || "5000", 10);
     
-    // Determine host based on environment
-    const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+    // Force production host binding for Render deployment
+    const host = '0.0.0.0';
 
-    // Start server - bind to specific interfaces
+    // Start server - bind to all interfaces for Render
     server.listen(port, host, () => {
-      const serverUrl = process.env.NODE_ENV === 'production' 
-        ? `Server running on port ${port}` 
-        : `http://localhost:${port}`;
-      
-      console.log(`✅ ${serverUrl}`);
+      console.log(`✅ Server running on port ${port}`);
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`🔗 Host binding: ${host}:${port}`);
       
       if (process.env.NODE_ENV !== 'production') {
         console.log(`📚 API Health Check: http://localhost:${port}/api/health`);
