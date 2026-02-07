@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://ku2407u661_db_user:QRIqFxXnFMNgsVj3@cluster0.xmyi9hz.mongodb.net/speech-to-text";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -22,4 +22,5 @@ export const disconnectDB = async (): Promise<void> => {
   } catch (error) {
     console.error("❌ Error disconnecting from MongoDB:", error);
   }
+
 };
